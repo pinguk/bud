@@ -1,0 +1,221 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+/*Nav*/
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: antiquewhite;
+    font-size: 20px;
+}
+
+nav .logo {
+    font-size: 40px;
+    letter-spacing: 2px;
+    color: #555555;
+}
+
+.navLinks {
+    display: flex;
+    /*background-color: red;*/
+    justify-content: space-around;
+    width: 40%;
+}
+
+.navLinks a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #555555;
+    font-size: 20px;
+}
+
+.navLinks li {
+    list-style: none;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #555555;
+    margin: 5px;
+    transition: all 0.3s ease;
+
+}
+
+/*@media screen and (max-width: 1024px) {*/
+/*    .navLinks {*/
+/*        display: flex;*/
+/*        background-color: red;*/
+/*        justify-content: space-around;*/
+/*        width: 60%;*/
+/*    }*/
+/*}*/
+
+@media screen and (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .navLinks {
+        position: absolute;
+        right: 0px;
+        top: 8vh;
+        height: 92vh;
+        width: 50%;
+        background-color: antiquewhite;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+    }
+
+    .navLinks li {
+        opacity: 0;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .footer_area {
+        display: none;
+    }
+}
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+
+}
+
+/*Body*/
+
+/**/
+/**/
+/**/
+
+/*Footer*/
+
+.footer_area {
+    background-color: #eeeeee;
+
+    width: 100%;
+    height: 30vh;
+
+    position: fixed;
+    bottom: 0;
+}
+
+.footers_combined {
+    width: 1350px;
+    height: 100%;
+    margin: auto;
+    padding: 10px;
+}
+
+.footer_area ul {
+    list-style: none;
+    line-height: 30px;
+}
+
+.footer_area a {
+    text-decoration: none;
+    color: #454545;
+}
+
+.fl {
+    float: left;
+}
+
+/*Footer columns*/
+.fc1 {
+    height: 100%;
+    width: 150px;
+
+    /*background-color: green;*/
+}
+
+.fc2 {
+    height: 100%;
+    width: 500px;
+
+    margin-left: 33px;
+
+    /*background-color: green;*/
+}
+
+.fc3 {
+    height: 100%;
+    width: 600px;
+
+    margin-left: 33px;
+
+    /*background-color: green;*/
+}
+
+/*Footer column elements*/
+.ft {
+    font-weight: bolder;
+    font-size: 25px;
+    color: #454545;
+    line-height: 50px;
+}
+
+.fb {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.f_comp_intro {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+
+/*이름 기입란*/
+input[type=text] {
+    width: 50%;
+    border: 1px solid dimgrey;
+    border-radius: 4px;
+    padding: 1px;
+}
+
+input[type=text] :focus {
+    border-color: #fac973;
+    box-shadow: 0 0 3px 0 #fac973;
+}
