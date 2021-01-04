@@ -7,7 +7,6 @@
 body {
     background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
     background-size: cover;
-    min-height: 92vh;
 }
 
 /*Nav*/
@@ -23,7 +22,7 @@ nav {
 }
 
 nav .logo h4 {
-    font-size: 40px;
+    font-size: 25px;
     letter-spacing: 2px;
     color: #555555;
 }
@@ -41,7 +40,7 @@ nav .logo h4 {
     text-decoration: none;
     font-weight: bold;
     color: #555555;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .navLinks li {
@@ -135,7 +134,30 @@ nav .logo h4 {
 
 /*Body*/
 
-.body_area {
+.body-area {
+
+}
+
+/*Login Page*/
+
+.login-box {
+
+}
+
+.input-area {
+
+}
+
+.submit {
+    background-image: url("static/kakao_login/en/kakao_login_medium_narrow.png");
+}
+
+.find-pw .signup-link {
+    text-decoration: none;
+}
+
+/*Signup Page*/
+.signup-box {
 
 }
 
@@ -198,20 +220,19 @@ nav .logo h4 {
 
 /*Footer column elements*/
 .ft {
-    font-weight: bolder;
-    font-size: 25px;
+    font-weight: bold;
+    font-size: 15px;
     color: #454545;
     line-height: 50px;
 }
 
 .fb {
-    font-weight: bold;
-    font-size: 20px;
+    font-size: 12px;
     line-height: 30px;
 }
 
 .f_comp_intro {
-    font-size: 20px;
+    font-size: 12px;
     line-height: 20px;
     margin-bottom: 10px;
 }
