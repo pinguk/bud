@@ -1,13 +1,19 @@
+html {
+    overflow: scroll;
+}
+
 * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+
 }
 
 body {
     background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
     background-size: cover;
 }
+
 
 /*Nav*/
 
@@ -16,8 +22,6 @@ nav {
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-
-    top: 1vh;
 }
 
 nav .logo h4 {
@@ -25,7 +29,6 @@ nav .logo h4 {
     letter-spacing: 2px;
     color: #555555;
 }
-
 
 .navLinks {
     display: flex;
@@ -136,12 +139,32 @@ nav .logo h4 {
     justify-content: center;
     align-items: center;
     height: 92vh;
+    top: 8vh;
 }
 
 /*Login Page*/
 
-.login-box {
+.kakao-login button {
+    /*background-image: url("static/kakao_login/en/kakao_login_medium_narrow.png");*/
+    background-image: url("../kakao_login/en/kakao_login_medium_narrow.png");
+    background-size: cover;
+    width: 110px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+}
 
+.login-box {
+    background-color: #fad0c4;
+    width: 50%;
+    margin: auto;
+
+    border: 3px solid lightcoral;
+    border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .input-area {
@@ -149,8 +172,7 @@ nav .logo h4 {
 }
 
 .submit {
-    /*background-image: url("static/kakao_login/en/kakao_login_medium_narrow.png");*/
-    background-image: url("{{ url_for('static', filename='kakao_login/en/kakao_login_medium_narrow.png') }}")
+
 }
 
 .find-pw .signup-link {
@@ -168,7 +190,7 @@ nav .logo h4 {
     width: 100%;
     height: 30vh;
 
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
 }
 

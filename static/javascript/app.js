@@ -6,7 +6,7 @@ const navSlide = () => {
     burger.addEventListener('click', () => {
         nav.classList.toggle('nav-active');
 
-    //Animate Links
+        //Animate Links
         navLinks.forEach((link, index) => {
             if (link.style.animation) {
                 link.style.animation = ''
@@ -15,10 +15,102 @@ const navSlide = () => {
             }
             // console.log(index / 5 + 0.2);
         })
-    //Burger Animation
+        //Burger Animation
         burger.classList.toggle('toggle');
     });
 
 }
 
 navSlide();
+
+//lend.html API javascript
+function makeLoan() {
+    // 1. 화면에 입력어 있는 제목, 저자, 리뷰 내용을 가져옵니다.
+    let lender_name = $("#lender-name").val();
+    let lender_phone = $("#lender-phone").val();
+    let lender_email = $("#lender-email").val();
+    let lender_dob = $("#lender-dob").val();
+    let borrower_name = $("#borrower-name").val();
+    let borrower_phone = $("#borrower-phone").val();
+    let borrower_email = $("#borrower-email").val();
+    let borrower_dob = $("#borrower-dob").val();
+    let loan_sum = $("#loan-sum").val();
+    let loan_strikedate = $("#loan-strikedate").val();
+    let loan_expirydate = $("#loan-expirydate").val();
+    let loan_interest = $("#loan-interest").val();
+    let loan_pw = $("#loan-pw").val();
+
+    // 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다.
+    if (lender_name == "") {
+        alert("빌려주는 사람의 이름을 입력해주세요");
+        $("#lender-name").focus();
+        return;
+    } else if (lender_phone == "") {
+        alert("빌려주는 사람의 전화번호를 입력해주세요");
+        $("#lender-phone").focus();
+        return;
+    } else if (lender_email == "") {
+        alert("빌려주는 사람의 이메일을 입력해주세요");
+        $("#lender-email").focus();
+        return;
+    } else if (lender_dob == "") {
+        alert("빌려주는 사람의 생년월일을 입력해주세요");
+        $("#lender-dob").focus();
+        return;
+    } else if (borrower_name == "") {
+        alert("빌리는 사람의 이름을 입력해주세요");
+        $("#borrower-name").focus();
+        return;
+    } else if (borrower_phone == "") {
+        alert("빌리는 사람의 전화번호를 입력해주세요");
+        $("#borrower-phone").focus();
+        return;
+    } else if (borrower_email == "") {
+        alert("빌리는 사람의 이메일을 입력해주세요");
+        $("#borrower-email").focus();
+        return;
+    } else if (borrower_dob == "") {
+        alert("빌리는 사람의 생년월일을 입력해주세요");
+        $("#borrower-dob").focus();
+        return;
+    } else if (loan_sum == "") {
+        alert("빌려주는 액수를 입력해주세요");
+        $("#loan-sum").focus();
+        return;
+    } else if (loan_strikedate == "") {
+        alert("해당 액수를 빌려준 날짜를 입력해주세요");
+        $("#loan-strikedate").focus();
+        return;
+    } else if (loan_expirydate == "") {
+        alert("빌려준 금액을 돌려받을 날짜를 입력해주세요");
+        $("#loan-expirydate").focus();
+        return;
+        // } else if (loan_interest == "") {
+        //     alert("적용되는 이자를 입력해주세요");
+        //     $("#lender-dob").focus();
+        //     return;
+    } else if (loan_pw == "") {
+        alert("해당 내역을 조회할 때 사용 기억하기 쉬운 비밀번호를 입력해주세요");
+        $("#loan-pw").focus();
+        return;
+    }
+
+    // 3. POST /review 에 저장(Create)을 요청합니다.
+    $.ajax({
+        type: "POST",
+        url: "/review",
+        data: {
+            lender_name_give: lender_name, lender_phone_give: lender_phone, lender_email_give: lender_email,
+            lender_dob_give: lender_dob, borrower_name_give: borrower_name, borrower_phone_give: borrower_phone,
+            borrower_email_give: borrower_email, borrower_dob_give: borrower_dob, loan_sum_give: loan_sum,
+            loan_strikedate_give: loan_strikedate, loan_expirydate_give: loan_expirydate,
+            loan_interest_give: loan_interest, loan_pw_give: loan_pw
+        },
+        success: function (response) {
+            if (response["result"] == "success") {
+                alert(response["msg"]);
+                window.location.reload();
+            }
+        }
+    })
+}
