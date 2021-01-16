@@ -40,65 +40,81 @@ function makeLoan() {
     let loan_interest = $("#loan-interest").val();
     let loan_pw = $("#loan-pw").val();
 
-    // 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다.
-    if (lender_name == "") {
-        alert("빌려주는 사람의 이름을 입력해주세요");
-        $("#lender-name").focus();
-        return;
-    } else if (lender_phone == "") {
-        alert("빌려주는 사람의 전화번호를 입력해주세요");
-        $("#lender-phone").focus();
-        return;
-    } else if (lender_email == "") {
-        alert("빌려주는 사람의 이메일을 입력해주세요");
-        $("#lender-email").focus();
-        return;
-    } else if (lender_dob == "") {
-        alert("빌려주는 사람의 생년월일을 입력해주세요");
-        $("#lender-dob").focus();
-        return;
-    } else if (borrower_name == "") {
-        alert("빌리는 사람의 이름을 입력해주세요");
-        $("#borrower-name").focus();
-        return;
-    } else if (borrower_phone == "") {
-        alert("빌리는 사람의 전화번호를 입력해주세요");
-        $("#borrower-phone").focus();
-        return;
-    } else if (borrower_email == "") {
-        alert("빌리는 사람의 이메일을 입력해주세요");
-        $("#borrower-email").focus();
-        return;
-    } else if (borrower_dob == "") {
-        alert("빌리는 사람의 생년월일을 입력해주세요");
-        $("#borrower-dob").focus();
-        return;
-    } else if (loan_sum == "") {
-        alert("빌려주는 액수를 입력해주세요");
-        $("#loan-sum").focus();
-        return;
-    } else if (loan_strikedate == "") {
-        alert("해당 액수를 빌려준 날짜를 입력해주세요");
-        $("#loan-strikedate").focus();
-        return;
-    } else if (loan_expirydate == "") {
-        alert("빌려준 금액을 돌려받을 날짜를 입력해주세요");
-        $("#loan-expirydate").focus();
-        return;
-        // } else if (loan_interest == "") {
-        //     alert("적용되는 이자를 입력해주세요");
-        //     $("#lender-dob").focus();
-        //     return;
-    } else if (loan_pw == "") {
-        alert("해당 내역을 조회할 때 사용 기억하기 쉬운 비밀번호를 입력해주세요");
-        $("#loan-pw").focus();
-        return;
-    }
+    // 2. 제목, 저자, 리뷰 중 하나라도 입력하지 않았을 경우 alert를 띄웁니다. [테스팅 시, 비활성화]
+    // if (lender_name == "") {
+    //     alert("빌려주는 사람의 이름을 입력해주세요");
+    //     $("#lender-name").focus();
+    //     return;
+    // } else if (lender_phone == "") {
+    //     alert("빌려주는 사람의 전화번호를 입력해주세요");
+    //     $("#lender-phone").focus();
+    //     return;
+    // } else if (lender_email == "") {
+    //     alert("빌려주는 사람의 이메일을 입력해주세요");
+    //     $("#lender-email").focus();
+    //     return;
+    // } else if (lender_dob == "") {
+    //     alert("빌려주는 사람의 생년월일을 입력해주세요");
+    //     $("#lender-dob").focus();
+    //     return;
+    // } else if (borrower_name == "") {
+    //     alert("빌리는 사람의 이름을 입력해주세요");
+    //     $("#borrower-name").focus();
+    //     return;
+    // } else if (borrower_phone == "") {
+    //     alert("빌리는 사람의 전화번호를 입력해주세요");
+    //     $("#borrower-phone").focus();
+    //     return;
+    // } else if (borrower_email == "") {
+    //     alert("빌리는 사람의 이메일을 입력해주세요");
+    //     $("#borrower-email").focus();
+    //     return;
+    // } else if (borrower_dob == "") {
+    //     alert("빌리는 사람의 생년월일을 입력해주세요");
+    //     $("#borrower-dob").focus();
+    //     return;
+    // } else if (loan_sum == "") {
+    //     alert("빌려주는 액수를 입력해주세요");
+    //     $("#loan-sum").focus();
+    //     return;
+    // } else if (loan_strikedate == "") {
+    //     alert("해당 액수를 빌려준 날짜를 입력해주세요");
+    //     $("#loan-strikedate").focus();
+    //     return;
+    // } else if (loan_expirydate == "") {
+    //     alert("빌려준 금액을 돌려받을 날짜를 입력해주세요");
+    //     $("#loan-expirydate").focus();
+    //     return;
+    //     // } else if (loan_interest == "") {
+    //     //     alert("적용되는 이자를 입력해주세요");
+    //     //     $("#lender-dob").focus();
+    //     //     return;
+    // } else if (loan_pw == "") {
+    //     alert("해당 내역을 조회할 때 사용 기억하기 쉬운 비밀번호를 입력해주세요");
+    //     $("#loan-pw").focus();
+    //     return;
+    // }
 
     // 3. POST /review 에 저장(Create)을 요청합니다.
+
+    //날짜 선택 시, 선택가능한 최대 일자가 오늘로 설정되도록 하는 javascript
+    // var today = new Date();
+    // var dd = today.getDate();
+    // var mm = today.getMonth() + 1; //January is 0!
+    // var yyyy = today.getFullYear();
+    // if (dd < 10) {
+    //     dd = '0' + dd
+    // }
+    // if (mm < 10) {
+    //     mm = '0' + mm
+    // }
+    //
+    // today = yyyy + '-' + mm + '-' + dd;
+    // document.getElementsByClassName("datefield").setAttribute("max", today);
+
     $.ajax({
         type: "POST",
-        url: "/review",
+        url: "/lend",
         data: {
             lender_name_give: lender_name, lender_phone_give: lender_phone, lender_email_give: lender_email,
             lender_dob_give: lender_dob, borrower_name_give: borrower_name, borrower_phone_give: borrower_phone,
@@ -110,6 +126,7 @@ function makeLoan() {
             if (response["result"] == "success") {
                 alert(response["msg"]);
                 window.location.reload();
+                window.location.replace('http://0.0.0.0:5009/lend-confirm')
             }
         }
     })

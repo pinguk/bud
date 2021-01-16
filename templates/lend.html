@@ -12,6 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--    <link rel="stylesheet" type="text/css" href="../static/css/style.css">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
@@ -66,7 +67,7 @@
                 <label for="lender-name">이름</label>
             </div>
             <div class="input-area">
-                <input id="lender-phone" type="number" name="lender-phone" autocomplete="off" required>
+                <input id="lender-phone" type="text" name="lender-phone" autocomplete="off" required>
                 <label for="lender-phone">전화번호</label>
             </div>
             <div class="input-area">
@@ -74,7 +75,8 @@
                 <label for="lender-email">이메일주소</label>
             </div>
             <div class="input-area">
-                <input id="lender-dob" type="date" name="lender-dob" autocomplete="off" required>
+                <input id="lender-dob" type="date" name="lender-dob" class="datefield" min="1910-01-01" max="2020-01-01"
+                       autocomplete="off" required>
                 <label for="lender-dob">생년월일</label>
             </div>
 
@@ -84,7 +86,7 @@
                 <label for="borrower-name">이름</label>
             </div>
             <div class="input-area">
-                <input id="borrower-phone" type="number" name="lender-phone" autocomplete="off" required>
+                <input id="borrower-phone" type="text" name="lender-phone" autocomplete="off" required>
                 <label for="borrower-phone">전화번호</label>
             </div>
             <div class="input-area">
@@ -92,24 +94,27 @@
                 <label for="borrower-email">이메일주소</label>
             </div>
             <div class="input-area">
-                <input id="borrower-dob" type="date" name="lender-dob" autocomplete="off" required>
+                <input id="borrower-dob" type="date" name="lender-dob" class="datefield" min="1910-01-01"
+                       max="2020-01-01" autocomplete="off" required>
                 <label for="borrower-dob">생년월일</label>
             </div>
 
             <h3>빌려주는 내용</h3>
             <!--            <input type="number" placeholder="빌려주는 액수"/>-->
             <div class="input-area">
-                <input id="loan-sum" type="date" name="loan-sum" autocomplete="off" required>
+                <input id="loan-sum" type="number" name="loan-sum" autocomplete="off" required>
                 <label for="loan-sum">빌려주는 액수</label>
             </div>
             <!--            <input type="date" placeholder="빌려주는 날짜"/>-->
             <div class="input-area">
-                <input id="loan-strikedate" type="date" name="loan-strikedate" autocomplete="off" required>
+                <input id="loan-strikedate" type="date" name="loan-strikedate" class="datefield" min="1910-01-01"
+                       max="2999-01-01" autocomplete="off" required>
                 <label for="loan-strikedate">빌려주는 날짜</label>
             </div>
             <!--            <input type="date" placeholder="갚아야하는 날짜"/>-->
             <div class="input-area">
-                <input id="loan-expirydate" type="date" name="loan-expirydate" autocomplete="off" required>
+                <input id="loan-expirydate" type="date" name="loan-expirydate" class="datefield" min="1910-01-01"
+                       max="2999-01-01" autocomplete="off" required>
                 <label for="loan-expirydate">갚아야하는 날짜</label>
             </div>
             <!--            <input type="number" placeholder="이자율"/><br/>-->
@@ -119,12 +124,12 @@
             </div>
             <!--            <input id="lender-pw" type="password" placeholder="내역 조회용 비밀번호">-->
             <div class="input-area">
-                <input id="loan-pw" type="pw" name="loan-pw" autocomplete="off" required>
+                <input id="loan-pw" type="password" name="loan-pw" autocomplete="off" required>
                 <label for="loan-pw">내역 조회용 비밀번호</label>
             </div>
-            <div class="input-area">
-                <button onclick="makeLoan()">내역 저장하기</button>
-            </div>
+        </div>
+        <div class="input-area">
+            <button onclick="makeLoan()">내역 저장하기</button>
         </div>
     </div>
 </div>
