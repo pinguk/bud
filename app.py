@@ -4,7 +4,7 @@ from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://test:test@localhost', 27017)
 db = client.dbBud
 
 # HTML 화면 보여주기
@@ -52,11 +52,11 @@ def register_loan():
         'borrower_phone': borrower_phone_receive,
         'borrower_email': borrower_email_receive,
         'borrower_dob': borrower_dob_receive,
-        'loan_sum_receive': loan_sum_receive,
-        'loan_strikedate_receive': loan_strikedate_receive,
-        'loan_expirydate_receive': loan_expirydate_receive,
-        'loan_interest_receive': loan_interest_receive,
-        'loan_pw_receive': loan_pw_receive,
+        'loan_sum': loan_sum_receive,
+        'loan_strikedate': loan_strikedate_receive,
+        'loan_expirydate': loan_expirydate_receive,
+        'loan_interest': loan_interest_receive,
+        'loan_pw': loan_pw_receive,
     }
 
     db.loans.insert_one(loan)
@@ -68,6 +68,11 @@ def register_loan():
 @app.route('/lend-confirm')
 def lend_confirm_page():
     return render_template('lend-confirm.html')
+
+@app.route('/loan-history', methods=['GET'])
+def recall_loans():
+    loans = list(db.loans.find({}, {'_id': 0}))
+    return jsonify({'result': 'success', 'loans': loans})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5009, debug=True)
