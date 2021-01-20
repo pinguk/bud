@@ -53,67 +53,81 @@
 
 <!--Body Section-->
 <div class="body-area">
-    <div class="signup-box">
-        <h1>내역 조회하기</h1>
-
-
-
-    </div>
-</div>
-
-<!--Footer Section-->
-<div class="footer_area">
-    <div class="footers_combined">
-        <div class="fc1 fl">
-            <ul class="fl">
-                <li class="ft">
-                    <a href="#">서비스 소개</a>
-                </li>
-                <li class="fb">
-                    <a href="#">빌리기</a>
-                </li>
-                <li class="fb">
-                    <a href="#">갚기</a>
-                </li>
-                <li class="fb">
-                    <a href="#">빌려주기</a>
-                </li>
-                <li class="fb">
-                    <a href="#">돌려받기</a>
-                </li>
-                <li class="fb">
-                    <a href="#">FAQ</a>
-                </li>
-            </ul>
-        </div>
-        <!--column 2: 회사 소개-->
-        <div class="fc2 fl">
-            <ul class="fl">
-                <li class="ft">
-                    <a href="#">회사 소개</a>
-                </li>
-                <li class="f_comp_intro">
-                    버드는 블록체인을 통해 개인신용등급을 탈중앙화하여<br>
-                    개인화된 신용도와 지인기반 파이낸싱을 기반으로<br>
-                    모두가 금전적 제약으로부터 자유로워질 수 있도록<br>
-                    도와주고 있습니다.
-                </li>
-                <li class="fb">
-                    <a href="#">서비스 비전</a>
-                </li>
-                <li class="fb">
-                    <a href="#">팀원 소개</a>
-                </li>
-            </ul>
-        </div>
-        <!--column 3: 고객 지원-->
-        <div class="fc3 fl">
-            <ul class="fl">
-                <li class="ft">이용자 지원</li>
-                <li>문의내용 기입 파트</li>
-            </ul>
+    <h1>내역 조회하기</h1>
+    <div class="lender-info">
+        <h1>빌려주기</h1>
+        <div class="lend_page-info" id="loans-box">
+            <h2>내용 확인하기</h2>
+            <h3>차용증</h3>
+            <tr>
+                <td>${lender_name}</td>
+                <td>${lender_phone}</td>
+                <td>${lender_email}</td>
+                <td>${borrower_name}</td>
+                <td>${borrower_phone}</td>
+                <td>${borrower_email}</td>
+                <td>${loan_sum}</td>
+                <td>${loan_strikedate}</td>
+                <td>${loan_expirydate}</td>
+                <td>${loan_interest}</td>
+            </tr>
         </div>
     </div>
 </div>
+
+    <!--Footer Section-->
+    <div class="footer_area">
+        <div class="footers_combined">
+            <div class="fc1 fl">
+                <ul class="fl">
+                    <li class="ft">
+                        <a href="#">서비스 소개</a>
+                    </li>
+                    <li class="fb">
+                        <a href="#">빌리기</a>
+                    </li>
+                    <li class="fb">
+                        <a href="#">갚기</a>
+                    </li>
+                    <li class="fb">
+                        <a href="#">빌려주기</a>
+                    </li>
+                    <li class="fb">
+                        <a href="#">돌려받기</a>
+                    </li>
+                    <li class="fb">
+                        <a href="#">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+            <!--column 2: 회사 소개-->
+            <div class="fc2 fl">
+                <ul class="fl">
+                    <li class="ft">
+                        <a href="#">회사 소개</a>
+                    </li>
+                    <li class="f_comp_intro">
+                        버드는 블록체인을 통해 개인신용등급을 탈중앙화하여<br>
+                        개인화된 신용도와 지인기반 파이낸싱을 기반으로<br>
+                        모두가 금전적 제약으로부터 자유로워질 수 있도록<br>
+                        도와주고 있습니다.
+                    </li>
+                    <li class="fb">
+                        <a href="#">서비스 비전</a>
+                    </li>
+                    <li class="fb">
+                        <a href="#">팀원 소개</a>
+                    </li>
+                </ul>
+            </div>
+            <!--column 3: 고객 지원-->
+            <div class="fc3 fl">
+                <ul class="fl">
+                    <li class="ft">이용자 지원</li>
+                    <li>문의내용 기입 파트</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

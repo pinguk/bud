@@ -59,13 +59,33 @@
         <div class="lend_page-info">
             <h2>내용 확인하기</h2>
             <h3>차용증</h3>
-            차용인은 XXXX년 XX월 XX일 대여인으로부터</br>
-            금 XXX원을, 변제기일 XXXX년 XX월 XX일과</br>
-            이자 연 XXX원/X%로 정하여 차용한 사실이 </br>
-            있음을 확인합니다.</br>
-            XXXX년 XX월 XX일</br>
-            대여인 XXX (인)
-            차용인 YYY (인)
+            <table id="loans-box">
+                <thead>
+                <tr>
+                    <th>채권자 이름</th>
+                    <th>채권자 전화번호</th>
+                    <th>채권자 이메일</th>
+                    <th>채무자 이름</th>
+                    <th>채무자 전화번호</th>
+                    <th>채무자 이메일</th>
+                    <th>빌려준 사람</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>${lender_name}</td>
+                    <td>${lender_phone}</td>
+                    <td>${lender_email}</td>
+                    <td>${borrower_name}</td>
+                    <td>${borrower_phone}</td>
+                    <td>${borrower_email}</td>
+                    <td>${loan_sum}</td>
+                    <td>${loan_strikedate}</td>
+                    <td>${loan_expirydate}</td>
+                    <td>${loan_interest}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
         <div class="input-area">
             <button onclick="">확인</button>

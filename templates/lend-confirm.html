@@ -12,6 +12,61 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $("#contract-box").html("");
+            // $("#cards-box").empty();
+            showContract();
+        });
+
+        function showContract() {
+            $.ajax({
+                type: "GET",
+                url: "/lend-confirm",
+                data: {},
+                success: function (response) {
+                    if (response["result"] == "success") {
+                        let loans = response["loans"];
+                        for (let i = 0; i < loans.length; i++) {
+                            let loan = loans[i];
+                            // console.log(loans);
+                            makeContract(loan[i]["lender_name"], loan[i]["lender_phone"], loan[i]["lender_email"],
+                                loan[i]["lender_dob"], loan[i]["borrower_name"], loan[i]["borrower_phone"],
+                                loan[i]["borrower_email"], loan[i]["borrower_dob"], loan[i]["loan_sum"],
+                                loan[i]["loan_strikedate"], loan[i]["loan_expirydate"], loan[i]["loan_interest"])
+                        }
+                    }
+                }
+            })
+        }
+
+        function makeContract(lender_name, lender_phone, lender_email, lender_dob, borrower_name, borrower_phone,
+                              borrower_email, borrower_dob, loan_sum, loan_strikedate, loan_expirydate,
+                              loan_interest) {
+            // (url, title, desc, comment) {
+            let htmlTmpl = `
+                <div class="contract">
+                        <h2>내용 확인하기</h2>
+                        <h3>차용증</h3>
+                        <div class="contract-body">
+                            차용인 ${borrower_name}은 ${loan_strikedate} 대여인 ${lender_name}으로부터</br>
+                            금 ${loan_sum}원을, 변제기일 ${loan_expirydate}과</br>
+                            이자 연 ${loan_interest}로 정하여 차용한 사실이 </br>
+                            있음을 확인합니다.</br>
+                            XXXX년 XX월 XX일</br>
+                        </div>
+                        <div class="contract-footer">
+                            <h4>대여인 ${lender_name} (인)</h4></br>
+                            <h5>생년월일: ${lender_dob}</br>
+                            전화번호: ${lender_phone} 이메일: ${lender_email}</h5>
+                            <h4>차용인 ${borrower_name} (인)</h4></br>
+                            <h5>생년월일: ${borrower_dob}</br>
+                            전화번호: ${borrower_phone} 이메일: ${borrower_email}</h5>
+                        </div>
+                </div>`
+            $("#contract-box").append(htmlTmpl);
+        }
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--    <link rel="stylesheet" type="text/css" href="../static/css/style.css">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -56,16 +111,18 @@
 <div class="body-area">
     <div class="lender-info">
         <h1>빌려주기</h1>
-        <div class="lend_page-info">
-            <h2>내용 확인하기</h2>
-            <h3>차용증</h3>
-            차용인은 XXXX년 XX월 XX일 대여인으로부터</br>
-            금 XXX원을, 변제기일 XXXX년 XX월 XX일과</br>
-            이자 연 XXX원/X%로 정하여 차용한 사실이 </br>
-            있음을 확인합니다.</br>
-            XXXX년 XX월 XX일</br>
-            대여인 XXX (인)
-            차용인 YYY (인)
+        <div class="lend_page-info" id="contract-box">
+<!--            <h2>내용 확인하기</h2>-->
+<!--            <h3>차용증</h3>-->
+<!--            <div>-->
+<!--                차용인은 XXXX년 XX월 XX일 대여인으로부터</br>-->
+<!--                금 XXX원을, 변제기일 XXXX년 XX월 XX일과</br>-->
+<!--                이자 연 XXX원/X%로 정하여 차용한 사실이 </br>-->
+<!--                있음을 확인합니다.</br>-->
+<!--                XXXX년 XX월 XX일</br>-->
+<!--                대여인 XXX (인)-->
+<!--                차용인 YYY (인)-->
+            </div>
         </div>
         <div class="input-area">
             <button onclick="">확인</button>
