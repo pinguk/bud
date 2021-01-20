@@ -5,12 +5,12 @@ from flask import Flask, render_template, jsonify, request
 app = Flask(__name__)
 
 # 서버 배포용
-# client = MongoClient('mongodb://test:test@localhost', 27017)
-# db = client.dbBud
+client = MongoClient('mongodb://test:test@localhost', 27017)
+db = client.dbBud
 
-# 로컬 테스트용
-client = MongoClient('localhost', 27017)
-db = client.dbBud_test
+# # 로컬 테스트용
+# client = MongoClient('localhost', 27017)
+# db = client.dbBud_test
 
 # HTML 화면 보여주기
 @app.route('/')
