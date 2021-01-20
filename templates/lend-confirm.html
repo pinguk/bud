@@ -12,34 +12,42 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
             crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
             $("#contract-box").html("");
             // $("#cards-box").empty();
             showContract();
         });
-
+​
         function showContract() {
+            let searchParams = new URLSearchParams(window.location.search)
+			let idx = searchParams.get('idx');
+​
             $.ajax({
                 type: "GET",
-                url: "/lend-confirm",
+                url: "/lend-data?idx="+idx,
                 data: {},
                 success: function (response) {
                     if (response["result"] == "success") {
-                        let loans = response["loans"];
-                        for (let i = 0; i < loans.length; i++) {
+                        let loan = response["loan"];
+                        makeContract(loan["lender_name"], loan["lender_phone"], loan["lender_email"],
+                                loan["lender_dob"], loan["borrower_name"], loan["borrower_phone"],
+                                loan["borrower_email"], loan["borrower_dob"], loan["loan_sum"],
+                                loan["loan_strikedate"], loan["loan_expirydate"], loan["loan_interest"])
+                        /*for (let i = 0; i < loans.length; i++) {
                             let loan = loans[i];
                             // console.log(loans);
                             makeContract(loan[i]["lender_name"], loan[i]["lender_phone"], loan[i]["lender_email"],
                                 loan[i]["lender_dob"], loan[i]["borrower_name"], loan[i]["borrower_phone"],
                                 loan[i]["borrower_email"], loan[i]["borrower_dob"], loan[i]["loan_sum"],
                                 loan[i]["loan_strikedate"], loan[i]["loan_expirydate"], loan[i]["loan_interest"])
-                        }
+                        }*/
                     }
                 }
             })
         }
-
+​
         function makeContract(lender_name, lender_phone, lender_email, lender_dob, borrower_name, borrower_phone,
                               borrower_email, borrower_dob, loan_sum, loan_strikedate, loan_expirydate,
                               loan_interest) {
@@ -70,7 +78,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--    <link rel="stylesheet" type="text/css" href="../static/css/style.css">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+​
 </head>
 <body>
 <!--Nav Bar-->
@@ -106,7 +114,7 @@
 </nav>
 <!--<script src="../static/javascript/app.js"></script>-->
 <script src="{{ url_for('static', filename='javascript/app.js') }}"></script>
-
+​
 <!--Body Section-->
 <div class="body-area">
     <div class="lender-info">
@@ -131,7 +139,7 @@
         </div>
     </div>
 </div>
-
+​
 <!--Footer Section-->
 <div class="footer_area">
     <div class="footers_combined">

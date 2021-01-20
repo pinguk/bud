@@ -5,7 +5,7 @@ from flask import Flask, render_template, jsonify, request
 app = Flask(__name__)
 
 # 서버 배포용
-client = MongoClient('mongodb://test:test@localhost', 27017)
+client = MongoClient('localhost', 27017)
 db = client.dbBud
 
 # # 로컬 테스트용
@@ -47,6 +47,12 @@ def register_loan():
     loan_interest_receive = request.form['loan_interest_give']
     loan_pw_receive = request.form['loan_pw_give']
 
+
+    loan = db.loans.find_one(sort=[("idx", -1)])
+    index = 1
+    if loan is not None:
+        index = loan['idx'] + 1
+
 # 2. DB에 정보 삽입하기
     loan = {
         'lender_name': lender_name_receive,
@@ -62,17 +68,24 @@ def register_loan():
         'loan_expirydate': loan_expirydate_receive,
         'loan_interest': loan_interest_receive,
         'loan_pw': loan_pw_receive,
+        'idx':index
     }
 
     db.loans.insert_one(loan)
 
 # 3. 성공 여부 & 성공 메시지 반환하기
 #     return jsonify({'result': 'success', 'msg': '빌려준 내역이 성공적으로 저장되었습니다.'})
-    return jsonify({'result': 'success', 'msg': '입력하신 내역을 통해 작성된 차용증을 확인해주세요.'})
+    return jsonify({'result': 'success', 'msg': '입력하신 내역을 통해 작성된 차용증을 확인해주세요.', 'idx':index})
 
 @app.route('/lend-confirm')
 def lend_confirm_page():
     return render_template('lend-confirm.html')
+
+@app.route('/lend-data')
+def get_lend_data():
+    idx = request.args.get('idx')
+    loan = db.loans.find_one({"idx":int(idx)}, {"_id":0})
+    return jsonify({'result': 'success', 'loan':loan})
 
 @app.route('/loan-history', methods=['GET'])
 def recall_loans():
