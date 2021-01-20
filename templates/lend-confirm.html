@@ -19,11 +19,11 @@
             // $("#cards-box").empty();
             showContract();
         });
-​
+
         function showContract() {
             let searchParams = new URLSearchParams(window.location.search)
 			let idx = searchParams.get('idx');
-​
+
             $.ajax({
                 type: "GET",
                 url: "/lend-data?idx="+idx,
@@ -47,7 +47,7 @@
                 }
             })
         }
-​
+
         function makeContract(lender_name, lender_phone, lender_email, lender_dob, borrower_name, borrower_phone,
                               borrower_email, borrower_dob, loan_sum, loan_strikedate, loan_expirydate,
                               loan_interest) {
@@ -78,7 +78,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--    <link rel="stylesheet" type="text/css" href="../static/css/style.css">-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-​
+
 </head>
 <body>
 <!--Nav Bar-->
@@ -114,7 +114,7 @@
 </nav>
 <!--<script src="../static/javascript/app.js"></script>-->
 <script src="{{ url_for('static', filename='javascript/app.js') }}"></script>
-​
+
 <!--Body Section-->
 <div class="body-area">
     <div class="lender-info">
@@ -139,7 +139,7 @@
         </div>
     </div>
 </div>
-​
+
 <!--Footer Section-->
 <div class="footer_area">
     <div class="footers_combined">

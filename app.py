@@ -4,13 +4,13 @@ from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
 
-# # 서버 배포용
-client = MongoClient('mongodb://test:test@localhost', 27017)
-db = client.dbBud
+# # # 서버 배포용
+# client = MongoClient('mongodb://test:test@localhost', 27017)
+# db = client.dbBud
 
 # 로컬 테스트용
-# client = MongoClient('localhost', 27017)
-# db = client.dbBud_test
+client = MongoClient('localhost', 27017)
+db = client.dbBud
 
 # HTML 화면 보여주기
 @app.route('/')
@@ -93,4 +93,4 @@ def recall_loans():
     return jsonify({'result': 'success', 'loans': loans})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5009, debug=True)
+    app.run('0.0.0.0', port=5000, debug=True)
